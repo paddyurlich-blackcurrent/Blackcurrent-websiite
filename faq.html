@@ -870,7 +870,7 @@
     <h2>Still Have Questions?</h2>
     <p>Talk to our team. No obligation, no pressure.</p>
   </div>
-  <a href="/cdn-cgi/l/email-protection#177f727b7b7857757b76747c74626565727963397e78" class="btn-white">Talk to Us</a>
+  <a href="mailto:info@blackcurrent.io?subject=I'm%20interested&body=Hi%20Blackcurrent%20team%2C%20please%20get%20in%20touch%2C%20I'm%20interested." class="btn-white" style="position:relative;z-index:1;">Contact Us</a>
 </section>
 
 <!-- FOOTER -->
@@ -899,8 +899,6 @@
   <p style="text-align: right;">© 2026 Blackcurrent. All rights reserved.</p>
 </footer>
 
-<!-- STICKY CTA -->
-<a href="#cta" class="sticky-cta" id="stickyCta">Talk to Us</a>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -928,17 +926,6 @@
     var firstCat = document.getElementById('cat-flex');
     if (firstCat) firstCat.classList.add('open');
 
-    // Sticky CTA
-    const stickyCta = document.getElementById('stickyCta');
-    const hero = document.getElementById('hero');
-
-    const obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        stickyCta.classList.toggle('visible', !e.isIntersecting);
-      });
-    }, { threshold: 0 });
-
-    obs.observe(hero);
 
   }); // end DOMContentLoaded
 </script>
