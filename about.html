@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Blackcurrent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rust: #ec5f30;
+    --rust-dark: #c44a20;
+    --charcoal: #22201d;
+    --charcoal-soft: #2e2b27;
+    --egg: #fffaef;
+    --white: #ffffff;
+    --sapphire: #5597d1;
+    --steel: #a2a09e;
+    --lead: #3a3a3a;
+    --section-pad: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 6rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    background: var(--egg);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem clamp(1.5rem, 6vw, 6rem);
+    background: var(--charcoal);
+    border-bottom: 1px solid #3a3a3a;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--steel);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+  }
+
+  .nav-link:hover { color: var(--white); }
+  .nav-link.active { color: var(--white); }
+
+  .nav-cta {
+    background: var(--rust);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: background 0.15s;
+    display: inline-block;
+  }
+
+  .nav-cta:hover { background: var(--rust-dark); }
+
+  /* SECTIONS BASE */
+  section { padding: var(--section-pad); }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.25rem;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--charcoal);
+    color: var(--white);
+    padding: var(--section-pad);
+    padding-top: calc(clamp(4rem, 8vw, 7rem) + 72px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 8px;
+    height: 100%;
+    background: var(--rust);
+  }
+
+  .page-hero-inner {
+    max-width: 820px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .page-hero h1 span { color: var(--rust); }
+
+  .page-hero-lead {
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    font-weight: 400;
+    color: var(--steel);
+    line-height: 1.7;
+    max-width: 680px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-rule {
+    display: flex;
+    gap: 1px;
+    background: var(--lead);
+    max-width: 520px;
+  }
+
+  .hero-rule-item {
+    flex: 1;
+    background: var(--charcoal-soft);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .hero-rule-item .label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--rust);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-rule-item .value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  /* MISSION */
+  .mission {
+    background: var(--egg);
+    position: relative;
+  }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .mission-body p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--lead);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .mission-body p:last-child { margin-bottom: 0; }
+
+  .mission-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--charcoal);
+  }
+
+  .mission-aside-item {
+    background: var(--white);
+    padding: 2rem 1.75rem;
+    border-left: 3px solid var(--rust);
+  }
+
+  .mission-aside-item p {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.5;
+  }
+
+  .mission-statement {
+    margin-top: 3rem;
+    padding: 2rem 2.5rem;
+    background: var(--charcoal);
+    color: var(--white);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.5;
+    border-left: 4px solid var(--rust);
+  }
+
+  .mission-statement em {
+    color: var(--steel);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  /* TEAM */
+  .team {
+    background: var(--charcoal);
+    color: var(--white);
+    position: relative;
+  }
+
+  .team::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 8px;
+    height: 50%;
+    background: var(--rust);
+  }
+
+  .team-intro {
+    max-width: 660px;
+    margin-bottom: 3rem;
+  }
+
+  .team-intro p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--steel);
+    line-height: 1.8;
+    margin-top: 1.5rem;
+  }
+
+  .team-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--lead);
+  }
+
+  .team-value {
+    background: var(--charcoal-soft);
+    padding: 2.5rem 2rem;
+    position: relative;
+  }
+
+  .team-value-num {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--lead);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.04em;
+  }
+
+  .team-value h3 { color: var(--white); font-size: 1.15rem; margin-bottom: 0.5rem; }
+  .team-value p { font-size: 0.875rem; color: var(--steel); font-weight: 400; line-height: 1.7; }
+
+  .team-value.highlight { background: var(--rust); }
+  .team-value.highlight .team-value-num { color: rgba(255,255,255,0.2); }
+  .team-value.highlight h3 { color: var(--white); }
+  .team-value.highlight p { color: rgba(255,255,255,0.8); }
+
+  .team-closing {
+    margin-top: 3rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--steel);
+    max-width: 700px;
+    line-height: 1.6;
+  }
+
+  .team-closing strong { color: var(--white); }
+
+  /* WHY FLEX */
+  .why-flex {
+    background: var(--egg);
+  }
+
+  .why-flex-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .why-flex-body p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--lead);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .why-flex-body p:last-child { margin-bottom: 0; }
+
+  .why-flex-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--charcoal);
+  }
+
+  .why-flex-stat {
+    background: var(--white);
+    padding: 1.75rem;
+  }
+
+  .why-flex-stat .stat-val {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--rust);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .why-flex-stat .stat-lbl {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--steel);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .why-flex-closing {
+    margin-top: 3rem;
+    padding: 2rem 2.5rem;
+    background: var(--charcoal);
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    border-left: 4px solid var(--rust);
+  }
+
+  /* IS IT FOR ME */
+  .for-me {
+    background: var(--charcoal);
+    color: var(--white);
+    position: relative;
+  }
+
+  .for-me-sub {
+    font-size: 1rem;
+    color: var(--steel);
+    font-weight: 400;
+    max-width: 560px;
+    margin-top: 1rem;
+    line-height: 1.7;
+  }
+
+  .for-me-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--lead);
+    margin-top: 3rem;
+  }
+
+  .for-me-card {
+    background: var(--charcoal-soft);
+    padding: 2rem 1.75rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .for-me-check {
+    width: 20px;
+    height: 20px;
+    background: var(--rust);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .for-me-check svg { display: block; }
+
+  .for-me-card p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  .for-me-closing {
+    margin-top: 3rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--steel);
+    max-width: 620px;
+    line-height: 1.7;
+  }
+
+  .for-me-closing strong { color: var(--white); }
+
+  /* HOW IT WORKS */
+  .how-it-works {
+    background: var(--egg);
+  }
+
+  .hiw-sub {
+    font-size: 1rem;
+    color: var(--lead);
+    font-weight: 400;
+    max-width: 540px;
+    margin-top: 1rem;
+    line-height: 1.7;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--charcoal);
+    margin-top: 3rem;
+  }
+
+  .step {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    position: relative;
+  }
+
+  .step-num {
+    font-size: 5rem;
+    font-weight: 800;
+    color: #f0ece0;
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.05em;
+  }
+
+  .step h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+  .step p { font-size: 0.875rem; color: var(--lead); font-weight: 400; line-height: 1.7; }
+
+  .step::after {
+    content: '';
+    position: absolute;
+    top: 2.5rem;
+    left: 0;
+    width: 3px;
+    height: 40px;
+    background: var(--rust);
+  }
+
+  .hiw-closing {
+    margin-top: 3rem;
+    background: var(--charcoal);
+    padding: 4rem clamp(1.5rem, 6vw, 6rem);
+    text-align: center;
+  }
+
+  .hiw-closing-statement {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--white);
+  }
+
+  .hiw-closing-statement em {
+    color: var(--rust);
+    font-style: normal;
+  }
+
+  .hiw-closing-statement .dot {
+    color: var(--rust);
+    margin: 0 0.15em;
+  }
+
+  .hiw-closing-item {
+    display: none;
+  }
+
+  .hiw-closing-item span {
+    display: none;
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--rust);
+    padding: var(--section-pad);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -5%;
+    width: 40vw;
+    height: 200%;
+    background: rgba(255,255,255,0.04);
+    transform: skewX(-12deg);
+  }
+
+  .cta-section h2 {
+    color: var(--white);
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .cta-section p {
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+    margin-top: 0.75rem;
+    font-weight: 400;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--rust);
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 1.1rem 2.5rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    transition: opacity 0.15s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-white:hover { opacity: 0.92; }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    color: var(--steel);
+    padding: 3rem clamp(1.5rem, 6vw, 6rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    border-top: 1px solid var(--lead);
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+
+  footer p { font-size: 0.8rem; color: var(--steel); font-weight: 400; }
+
+  footer a {
+    color: var(--rust);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  footer a:hover { text-decoration: underline; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .mission-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .team-values { grid-template-columns: 1fr; }
+    .why-flex-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .for-me-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .hiw-closing { flex-direction: column; }
+    .cta-section { grid-template-columns: 1fr; gap: 2rem; }
+    footer { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 540px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .hero-rule { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="index.html" class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 258.1 35.55" style="height:36px;width:auto;display:block;">
+      <path d="M50.11,30.75h-5.54V.32h5.54v30.43Z" style="fill:#ffffff;"/>
+      <path d="M75,30.75h-5.4v-2.26c-1.48,1.84-3.74,2.88-6.1,2.79-5.61-.11-10.07-4.74-9.96-10.35,0-.15,0-.3.02-.44-.25-5.58,4.07-10.32,9.65-10.57.1,0,.2,0,.29,0,2.36-.09,4.62.95,6.1,2.79v-2.43h5.4v20.49ZM59.21,20.49c0,2.92,2.37,5.29,5.29,5.29,2.92,0,5.29-2.37,5.29-5.29,0-2.92-2.37-5.29-5.29-5.29s-5.29,2.37-5.29,5.29h0Z" style="fill:#ffffff;"/>
+      <path d="M97.61,13.58l-3.95,3.35c-1.09-1.31-2.7-2.07-4.41-2.08-2.88.05-5.18,2.43-5.13,5.31,0,.11,0,.22.02.33-.25,2.87,1.87,5.4,4.74,5.66.12.01.25.02.37.02,1.71-.03,3.33-.79,4.44-2.08l3.95,3.53c-1.98,2.51-5.03,3.93-8.22,3.84-5.84.2-10.73-4.38-10.93-10.22,0-.19,0-.38,0-.57,0-5.84,4.73-10.58,10.57-10.59.12,0,.24,0,.36,0,3.12-.19,6.16,1.1,8.18,3.49h0Z" style="fill:#ffffff;"/>
+      <path d="M106.07,17.63h1.97l5.75-7.3h6.77l-8.08,9.59,8.15,10.83h-6.77l-5.92-8.29h-1.87v8.29h-5.5V.32h5.5v17.32Z" style="fill:#ffffff;"/>
+      <path d="M139.5,13.58l-3.99,3.35c-1.07-1.32-2.68-2.08-4.37-2.08-2.88.05-5.18,2.43-5.13,5.31,0,.11,0,.22.02.33-.25,2.87,1.87,5.4,4.74,5.66.12.01.25.02.37.02,1.71-.03,3.33-.79,4.44-2.08l3.95,3.53c-2.02,2.44-5.06,3.8-8.22,3.67-5.84.2-10.73-4.38-10.93-10.22,0-.19,0-.38,0-.57,0-5.84,4.73-10.58,10.57-10.59.12,0,.24,0,.36,0,3.15-.15,6.19,1.22,8.18,3.67Z" style="fill:#ffffff;"/>
+      <path d="M161.69,22.04c.25,4.86-3.49,9.01-8.35,9.26-.4.02-.81.01-1.21-.02-4.84.49-9.17-3.03-9.67-7.88-.05-.45-.06-.91-.03-1.36v-11.78h5.54v11.28c0,3.28,1.8,4.62,4.16,4.62s4.06-1.48,4.06-4.62v-11.28h5.5v11.78Z" style="fill:#ffffff;"/>
+      <path d="M180.34,10.16l-.85,5.47c-1.06-.42-2.18-.63-3.32-.63-2.25-.16-4.21,1.55-4.36,3.8-.02.27-.01.55.03.82v11.14h-5.61V10.26h5.36v2.26c1.28-1.89,3.47-2.95,5.75-2.79,1.02-.04,2.03.1,3,.42Z" style="fill:#ffffff;"/>
+      <path d="M196.99,10.16l-.85,5.47c-1.05-.42-2.18-.63-3.31-.63-2.25-.16-4.21,1.54-4.36,3.8-.02.27-.01.55.03.82v11.14h-5.5V10.26h5.36v2.26c1.28-1.89,3.47-2.95,5.75-2.79.98-.03,1.96.11,2.89.42h0Z" style="fill:#ffffff;"/>
+      <path d="M218.04,20.49c.04.62.04,1.25,0,1.87h-14.63c.36,2.53,2.6,4.37,5.15,4.23,1.94.02,3.83-.66,5.33-1.9l3.21,3.53c-2.35,2.07-5.4,3.17-8.53,3.07-5.6.24-10.34-4.11-10.58-9.71-.01-.29-.01-.58,0-.87-.41-5.56,3.76-10.39,9.31-10.8.35-.03.7-.03,1.05-.02,5.45.08,9.81,4.57,9.72,10.02,0,.2-.01.4-.03.59h0ZM203.44,18.59h9.06c-.17-2.32-2.11-4.12-4.44-4.09-2.39-.1-4.43,1.71-4.62,4.09Z" style="fill:#ffffff;"/>
+      <path d="M240.89,17.63v13.05h-5.54v-11.18c0-2.96-1.48-4.58-3.98-4.58-2.32-.09-4.27,1.72-4.36,4.03,0,.2,0,.39.02.59v11.21h-5.54V10.26h5.4v2.43c1.35-1.97,3.64-3.1,6.03-2.96,4.2-.2,7.77,3.05,7.97,7.25.01.22.01.43,0,.65Z" style="fill:#ffffff;"/>
+      <path d="M243.82,10.26v-6.1h5.54v6.1h7.41v4.9h-7.41v7.51c0,2.54,1.34,3.53,3.07,3.53,1.33-.19,2.59-.72,3.67-1.52l2.01,4.3c-1.97,1.43-4.34,2.18-6.77,2.15-5.08.14-7.51-2.72-7.51-8.04v-7.93" style="fill:#ffffff;"/>
+      <path d="M17.91,0C8.1-.08.08,7.82,0,17.64c-.08,9.82,7.82,17.84,17.64,17.91.09,0,.18,0,.28,0V0Z" style="fill:#ffffff;"/>
+      <path d="M32.62,14.53c3.53,0,6-1.2,6-4.09h0c0-2.54-1.94-3.99-5.47-3.99h-8.22v8.08h7.69Z" style="fill:#ffffff;"/>
+      <path d="M33.11,28.95c3.95,0,6.42-1.2,6.42-4.09v-.18c0-2.54-2.08-3.99-5.82-3.99h-8.78v8.25h8.18Z" style="fill:#ffffff;"/>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link active">About Us</a>
+    <a href="faq.html" class="nav-link">FAQ</a>
+  </div>
+
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="section-label">About Blackcurrent</p>
+    <h1>Powering <span>Confident</span> Decisions.</h1>
+    <p class="page-hero-lead">The energy ecosystem is becoming more complex, distributed and dynamic. Blackcurrent was created to remove the uncertainty that complexity creates, turning energy from a constraint into a strategic asset.</p>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission">
+  <p class="section-label">Who We Are</p>
+  <h2>Not Just a Software Company.</h2>
+  <div class="mission-grid">
+    <div class="mission-body">
+      <p>We build technology and partnerships that help organisations understand, manage and actively shape their energy use, turning energy from a constraint into a strategic asset.</p>
+      <p>We are practitioners. System thinkers. Long-term partners. Our work sits at the intersection of technology, energy markets, infrastructure and real-world operations.</p>
+      <p>Blackcurrent was created to remove uncertainty. The kind that shows up as hesitation around costs, capacity, technology choices, and whether investments made today will still make sense tomorrow.</p>
+    </div>
+    <div class="mission-aside">
+      <div class="mission-aside-item">
+        <p>Practitioners, not just technologists: we've operated inside complex energy systems, not just built software for them.</p>
+      </div>
+      <div class="mission-aside-item">
+        <p>System thinkers: we understand what happens when theory meets operational reality.</p>
+      </div>
+      <div class="mission-aside-item">
+        <p>Long-term partners: our relationships are built for decades, not deployments.</p>
+      </div>
+    </div>
+  </div>
+  <div class="mission-statement">
+    Because the future of energy isn't just about technology —&nbsp;<em>it's about trust, clarity, and the ability to adapt over time.</em>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <p class="section-label">Our Team</p>
+  <div class="team-intro">
+    <h2>Decades of Experience. One Clear Mission.</h2>
+    <p>Blackcurrent is made up of people who have spent decades working across energy, infrastructure, software, and large-scale operations in Aotearoa and globally. We've worked within complex systems. We understand what happens when theory meets reality. The best solutions are the ones that actually work on the ground.</p>
+  </div>
+  <div class="team-values">
+    <div class="team-value">
+      <div class="team-value-num">01</div>
+      <h3>Future-Focused</h3>
+      <p>We plan for where the energy system is heading, without losing sight of what your business needs to operate confidently today.</p>
+    </div>
+    <div class="team-value">
+      <div class="team-value-num">02</div>
+      <h3>Pragmatic</h3>
+      <p>Focused on outcomes, not hype. We separate what's commercially proven from what's still theoretical, and we're direct about the difference.</p>
+    </div>
+    <div class="team-value highlight">
+      <div class="team-value-num">03</div>
+      <h3>Partnership-Led</h3>
+      <p>Committed to long-term relationships, not one-off projects. We succeed when our customers succeed, and that shapes everything we do.</p>
+    </div>
+  </div>
+  <p class="team-closing">As electrification, distributed energy and flexibility reshape the energy system, <strong>our team is focused on one thing</strong>: helping our customers move forward with confidence.</p>
+</section>
+
+<!-- WHY FLEX -->
+<section class="why-flex">
+  <p class="section-label">Why Blackcurrent Flex?</p>
+  <h2>Because Certainty Matters.</h2>
+  <div class="why-flex-grid">
+    <div class="why-flex-body">
+      <p>Energy costs are rising. Capacity constraints are real. Electrification, solar, batteries and flexibility are becoming essential, but too often businesses are left navigating complexity, fragmented advice, and technology that doesn't talk to each other.</p>
+      <p>Blackcurrent Flex brings it all together. We combine intelligent software, real-world energy expertise, and long-term partnership to help you make confident decisions, now and into the future.</p>
+      <p>Whether you're managing today's energy costs or planning for electrification and resilience over the next 10–25 years, Flex gives you clarity, control and certainty.</p>
+    </div>
+    <div class="why-flex-panel">
+      <div class="why-flex-stat">
+        <div class="stat-val">10–25yr</div>
+        <div class="stat-lbl">Planning horizon we design for</div>
+      </div>
+      <div class="why-flex-stat">
+        <div class="stat-val">One platform</div>
+        <div class="stat-lbl">Visibility, intelligence &amp; action: integrated</div>
+      </div>
+      <div class="why-flex-stat">
+        <div class="stat-val">One partner</div>
+        <div class="stat-lbl">From design through to long-term optimisation</div>
+      </div>
+    </div>
+  </div>
+  <div class="why-flex-closing">
+    This isn't just monitoring. <strong>It's active energy management designed for what's next.</strong>
+  </div>
+</section>
+
+<!-- IS IT FOR ME -->
+<section class="for-me">
+  <p class="section-label">Is Blackcurrent Flex for Me?</p>
+  <h2>Is Flex Right For You?.</h2>
+  <p class="for-me-sub">From property portfolios and co-operatives to commercial and industrial operations, Flex adapts to the way your business actually runs.</p>
+  <div class="for-me-grid">
+    <div class="for-me-card">
+      <div class="for-me-check">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p>Feeling pressure from rising electricity or fuel costs</p>
+    </div>
+    <div class="for-me-card">
+      <div class="for-me-check">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p>Hitting, or worried about hitting, electricity capacity limits</p>
+    </div>
+    <div class="for-me-card">
+      <div class="for-me-check">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p>Considering solar, batteries, electrification or load growth</p>
+    </div>
+    <div class="for-me-card">
+      <div class="for-me-check">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p>Want to reduce emissions without compromising operations</p>
+    </div>
+    <div class="for-me-card">
+      <div class="for-me-check">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p>Need confidence to invest, with not just technology, but long-term support</p>
+    </div>
+    <div class="for-me-card">
+      <div class="for-me-check">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p>Want a smarter, more resilient energy future, even if you're not sure where to start</p>
+    </div>
+  </div>
+  <p class="for-me-closing">You don't need to have everything figured out. <strong>You just need to want a smarter, more resilient energy future.</strong></p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <p class="section-label">How Blackcurrent Flex Works</p>
+  <h2>A Smart End-to-End Energy System.</h2>
+  <p class="hiw-sub">Blackcurrent Flex is an integrated platform and service that evolves with your business, from first insight to long-term optimisation.</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Visibility</h3>
+      <p>Clear, near-real-time insight into how, when and where energy is used, across one site or many. No more guesswork. You can finally see what's driving costs, demand and constraints.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Intelligence</h3>
+      <p>Flex uses data, controls and market signals to identify where energy can be shifted, stored or optimised without disrupting operations. Smarter scheduling, automated controls, and investment-ready modelling.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Action</h3>
+      <p>We don't just show you the data. We help you act on it. From planning and modelling through to implementation and optimisation, Flex supports practical changes that unlock real value.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Long-Term Partnership</h3>
+      <p>Energy systems don't stand still and neither do we. Flex is designed to support you over decades, adapting as your energy needs, technology and market conditions change.</p>
+    </div>
+  </div>
+  <div class="hiw-closing">
+    <p class="hiw-closing-statement">
+      <em>One</em> platform<span class="dot">.</span>
+      <em>One</em> partner<span class="dot">.</span>
+      Built for the long term.
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div>
+    <h2>Ready to Make Your Energy Work Harder?</h2>
+    <p>Get a bespoke design and quote. No obligation, no generic proposals.</p>
+  </div>
+  <a href="mailto:info@blackcurrent.io?subject=I'm%20interested&body=Hi%20Blackcurrent%20team%2C%20please%20get%20in%20touch%2C%20I'm%20interested." class="btn-white">Contact Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 258.1 35.55" style="height:24px;width:auto;display:block;">
+        <path d="M50.11,30.75h-5.54V.32h5.54v30.43Z" style="fill:#ffffff;"/>
+        <path d="M75,30.75h-5.4v-2.26c-1.48,1.84-3.74,2.88-6.1,2.79-5.61-.11-10.07-4.74-9.96-10.35,0-.15,0-.3.02-.44-.25-5.58,4.07-10.32,9.65-10.57.1,0,.2,0,.29,0,2.36-.09,4.62.95,6.1,2.79v-2.43h5.4v20.49ZM59.21,20.49c0,2.92,2.37,5.29,5.29,5.29,2.92,0,5.29-2.37,5.29-5.29,0-2.92-2.37-5.29-5.29-5.29s-5.29,2.37-5.29,5.29h0Z" style="fill:#ffffff;"/>
+        <path d="M97.61,13.58l-3.95,3.35c-1.09-1.31-2.7-2.07-4.41-2.08-2.88.05-5.18,2.43-5.13,5.31,0,.11,0,.22.02.33-.25,2.87,1.87,5.4,4.74,5.66.12.01.25.02.37.02,1.71-.03,3.33-.79,4.44-2.08l3.95,3.53c-1.98,2.51-5.03,3.93-8.22,3.84-5.84.2-10.73-4.38-10.93-10.22,0-.19,0-.38,0-.57,0-5.84,4.73-10.58,10.57-10.59.12,0,.24,0,.36,0,3.12-.19,6.16,1.1,8.18,3.49h0Z" style="fill:#ffffff;"/>
+        <path d="M106.07,17.63h1.97l5.75-7.3h6.77l-8.08,9.59,8.15,10.83h-6.77l-5.92-8.29h-1.87v8.29h-5.5V.32h5.5v17.32Z" style="fill:#ffffff;"/>
+        <path d="M139.5,13.58l-3.99,3.35c-1.07-1.32-2.68-2.08-4.37-2.08-2.88.05-5.18,2.43-5.13,5.31,0,.11,0,.22.02.33-.25,2.87,1.87,5.4,4.74,5.66.12.01.25.02.37.02,1.71-.03,3.33-.79,4.44-2.08l3.95,3.53c-2.02,2.44-5.06,3.8-8.22,3.67-5.84.2-10.73-4.38-10.93-10.22,0-.19,0-.38,0-.57,0-5.84,4.73-10.58,10.57-10.59.12,0,.24,0,.36,0,3.15-.15,6.19,1.22,8.18,3.67Z" style="fill:#ffffff;"/>
+        <path d="M161.69,22.04c.25,4.86-3.49,9.01-8.35,9.26-.4.02-.81.01-1.21-.02-4.84.49-9.17-3.03-9.67-7.88-.05-.45-.06-.91-.03-1.36v-11.78h5.54v11.28c0,3.28,1.8,4.62,4.16,4.62s4.06-1.48,4.06-4.62v-11.28h5.5v11.78Z" style="fill:#ffffff;"/>
+        <path d="M180.34,10.16l-.85,5.47c-1.06-.42-2.18-.63-3.32-.63-2.25-.16-4.21,1.55-4.36,3.8-.02.27-.01.55.03.82v11.14h-5.61V10.26h5.36v2.26c1.28-1.89,3.47-2.95,5.75-2.79,1.02-.04,2.03.1,3,.42Z" style="fill:#ffffff;"/>
+        <path d="M196.99,10.16l-.85,5.47c-1.05-.42-2.18-.63-3.31-.63-2.25-.16-4.21,1.54-4.36,3.8-.02.27-.01.55.03.82v11.14h-5.5V10.26h5.36v2.26c1.28-1.89,3.47-2.95,5.75-2.79.98-.03,1.96.11,2.89.42h0Z" style="fill:#ffffff;"/>
+        <path d="M218.04,20.49c.04.62.04,1.25,0,1.87h-14.63c.36,2.53,2.6,4.37,5.15,4.23,1.94.02,3.83-.66,5.33-1.9l3.21,3.53c-2.35,2.07-5.4,3.17-8.53,3.07-5.6.24-10.34-4.11-10.58-9.71-.01-.29-.01-.58,0-.87-.41-5.56,3.76-10.39,9.31-10.8.35-.03.7-.03,1.05-.02,5.45.08,9.81,4.57,9.72,10.02,0,.2-.01.4-.03.59h0ZM203.44,18.59h9.06c-.17-2.32-2.11-4.12-4.44-4.09-2.39-.1-4.43,1.71-4.62,4.09Z" style="fill:#ffffff;"/>
+        <path d="M240.89,17.63v13.05h-5.54v-11.18c0-2.96-1.48-4.58-3.98-4.58-2.32-.09-4.27,1.72-4.36,4.03,0,.2,0,.39.02.59v11.21h-5.54V10.26h5.4v2.43c1.35-1.97,3.64-3.1,6.03-2.96,4.2-.2,7.77,3.05,7.97,7.25.01.22.01.43,0,.65Z" style="fill:#ffffff;"/>
+        <path d="M243.82,10.26v-6.1h5.54v6.1h7.41v4.9h-7.41v7.51c0,2.54,1.34,3.53,3.07,3.53,1.33-.19,2.59-.72,3.67-1.52l2.01,4.3c-1.97,1.43-4.34,2.18-6.77,2.15-5.08.14-7.51-2.72-7.51-8.04v-7.93" style="fill:#ffffff;"/>
+        <path d="M17.91,0C8.1-.08.08,7.82,0,17.64c-.08,9.82,7.82,17.84,17.64,17.91.09,0,.18,0,.28,0V0Z" style="fill:#ffffff;"/>
+        <path d="M32.62,14.53c3.53,0,6-1.2,6-4.09h0c0-2.54-1.94-3.99-5.47-3.99h-8.22v8.08h7.69Z" style="fill:#ffffff;"/>
+        <path d="M33.11,28.95c3.95,0,6.42-1.2,6.42-4.09v-.18c0-2.54-2.08-3.99-5.82-3.99h-8.78v8.25h8.18Z" style="fill:#ffffff;"/>
+      </svg>
+    </div>
+    <p>Energy technology for businesses that demand more. &nbsp;&middot;&nbsp; <a href="https://www.blackcurrent.io">www.blackcurrent.io</a></p>
+  </div>
+  <p style="text-align: right;">© 2026 Blackcurrent. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
